@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Студенты</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <h1>Институт</h1>
+  <span th:if="${students.size() == 0}">Список студентов пуст<br></span>
+  <table th:if="${students.size() > 0}" class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <!-- <td>ID</td> -->
+      <td><b> Имя </b></td>
+      <td><b>Возраст</b></td>
+      <td><b>Группа</b></td>
+      <td><b>Действия</b></td>
+      <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+      <!-- <td th:text="${student.id}"/> -->
+      <td th:text="${student.name}"/>
+      <td th:text="${student.age}"/>
+      <td th:text="${student.department.title}"/>
+      <td><a class="btn btn-info" th:href="@{'/students/details/' + ${student.id}}">Информация</a></td>
+      <td><a class="btn btn-warning" th:href="@{'/students/update/' + ${student.id}}">Редактировать</a></td>
+      <td><a class="btn btn-danger" th:href="@{'/students/delete/' + ${student.id}}">Удалить</a></td>
+      <td><a class="btn btn-danger" th:href="@{'/students/write/' + ${student.id}}">Написать</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-secondary" th:href="@{'/students/new'}">Добавить студента</a>
+  <a class="btn btn-secondary" th:href="@{'/departments/new'}">Добавить группу</a>
+</div>
+</body>
+</html>

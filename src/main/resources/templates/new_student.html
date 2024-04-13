@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Новый студент</title>
+</head>
+<body>
+<h1>Форма информации о студенте</h1>
+<form action="#" th:action="@{/students/new}" th:object="${student}" method="post">
+    <p>Имя студента:
+        <input type="text" placeholder="Введите имя" th:field="*{name}"/></p>
+    <p>Возраст:
+        <input type="text" placeholder="Введите возраст" th:field="*{age}"/></p>
+    <p>Группа:
+        <input type="text" placeholder="Группа" th:field="*{department}"/></p>
+    <p><input type="submit" value="Отправить"/>
+        <input type="reset" value="Сброс"/></p>
+</form>
+</body>
+</html>
